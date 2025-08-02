@@ -1,0 +1,26 @@
+[
+  {
+    "rule_id": "elektro_steckdose_high",
+    "gewerk_id": 3,
+    "einheit": "\u20ac/Stk",
+    "max_threshold": 150,
+    "alert_threshold": 100,
+    "message": "Steckdosenpreis \u00fcber Marktbereich (>150\u202f\u20ac)"
+  },
+  {
+    "rule_id": "klima_monosplit_high",
+    "gewerk_id": 4,
+    "einheit": "\u20ac/Stk",
+    "max_threshold": 5000,
+    "alert_threshold": 4000,
+    "message": "Klimaanlagenpreis hoch (>5000\u202f\u20ac)"
+  },
+  {
+    "rule_id": "sanitaer_badsanierung_high",
+    "gewerk_id": 5,
+    "einheit": "\u20ac/m2",
+    "max_threshold": 3500,
+    "alert_threshold": 2500,
+    "message": "Badsanierung pro m\u00b2 \u00fcber Marktdurchschnitt"
+  }
+]
