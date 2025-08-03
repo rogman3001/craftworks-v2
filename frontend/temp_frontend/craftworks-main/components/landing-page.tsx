@@ -5,6 +5,7 @@ import { Upload, CheckCircle, Shield, Zap, FileText, Euro, Award } from "lucide-
 import Link from "next/link"
 import CookieSettingsButton from "./cookie-settings-button"
 import CookieBanner from "./cookie-banner"
+import OfferEvaluator from "@/components/OfferEvaluator";
 
 export default function LandingPage() {
   return (
@@ -44,8 +45,10 @@ export default function LandingPage() {
                   Laden Sie Ihr Handwerkerangebot hoch und erhalten Sie sofort eine KI-Bewertung: Ist der Preis fair?
                   Gibt es versteckte Kosten? Ist eine Förderung möglich?
                 </p>
+              <div className="mt-8 w-full max-w-lg mx-auto">
+                <OfferEvaluator />
               </div>
-
+              </div>
               <div className="flex flex-col sm:flex-row gap-3 items-center justify-center w-full max-w-md">
                 <Link href="/upload" className="w-full sm:w-auto">
                   <Button
