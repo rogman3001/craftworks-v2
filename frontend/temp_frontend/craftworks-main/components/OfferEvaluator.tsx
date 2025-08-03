@@ -6,16 +6,17 @@ export default function OfferEvaluator() {
   const [offerId, setOfferId] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [result, setResult] = useState<EvaluationResult | null>(null);
+  const [results, setResults] = useState<EvaluationResult[] | null>(null);
+
 
   const handleEvaluate = async () => {
     if (!offerId) return;
     setLoading(true);
     setError(null);
-    setResult(null);
+    setResults(null);
     try {
-      const res = await evaluateOffer(offerId);
-      setResult(res);
+    const res = await evaluateOffer(offerId);
+    setResults(res);
     } catch (e: any) {
       setError(e.message || "Unbekannter Fehler");
     } finally {
@@ -23,11 +24,11 @@ export default function OfferEvaluator() {
     }
   };
 
-  const colorMap = {
-    red: "bg-red-500",
-    yellow: "bg-yellow-400",
-    green: "bg-green-500",
-  };
+const colorMap = {
+  rot: "bg-red-500",
+  gelb: "bg-yellow-400",
+  grün: "bg-green-500",
+};
 
   return (
     <div className="p-4 border rounded-md max-w-md mx-auto space-y-4">
@@ -48,15 +49,22 @@ export default function OfferEvaluator() {
 
       {loading && <p>⏳ Bewertung läuft...</p>}
       {error && <p className="text-red-600">❌ {error}</p>}
-      {result && (
-        <div className="flex items-center gap-3">
-          <span
-            className={`w-5 h-5 rounded-full ${colorMap[result.status]}`}
-            title={result.status}
-          />
-          <span>{result.comment}</span>
-        </div>
-      )}
+      {results && (
+        <div className="space-y-2">
+          {results.map((r, idx) => (
+            <div key={idx} className="flex items-center gap-3">
+              <span
+                className={`w-5 h-5 rounded-full ${colorMap[r.bewertung]}`}
+                title={r.bewertung}
+              />
+              <span>
+            <strong>Kommentar:</strong>{" "}
+          {r.kommentare.length > 0 ? r.kommentare.join(", ") : "Keine"}
+        </span>
+      </div>
+    ))}
+  </div>
+)}
     </div>
   );
 }
